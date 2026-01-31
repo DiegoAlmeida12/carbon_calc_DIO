@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Emissão de CO₂</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Calculadora de Emissão de CO₂</h1>
+            <p class="subtitle">Calcule a emissão de carbono da sua viagem</p>
+        </header>
+
+        <main>
+            <form id="carbonForm" class="carbon-form">
+                <div class="form-group">
+                    <label for="originSelect">Cidade de Origem:</label>
+                    <select id="originSelect" name="origin" required>
+                        <option value="">-- Selecione a origem --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="destinationSelect">Cidade de Destino:</label>
+                    <select id="destinationSelect" name="destination" required>
+                        <option value="">-- Selecione o destino --</option>
+                    </select>
+                </div>
+
+                <div id="distanceDisplay" class="distance-display hidden">
+                    <div class="distance-info">
+                        <span class="distance-label">Distância calculada:</span>
+                        <span id="calculatedDistance" class="distance-value">-</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="transportSelect">Tipo de Transporte:</label>
+                    <select id="transportSelect" name="transport" required>
+                        <option value="">-- Selecione o transporte --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="peopleInput">Número de Pessoas:</label>
+                    <input 
+                        type="number" 
+                        id="peopleInput" 
+                        name="people" 
+                        min="1" 
+                        max="1000" 
+                        value="1" 
+                        required
+                        class="number-input"
+                    >
+                    <small class="input-hint">Quantidade de passageiros na viagem</small>
+                </div>
+
+                <button type="submit" class="btn-calculate">Calcular Emissão</button>
+            </form>
+
+            <div id="resultContainer" class="result-container hidden">
+                <h2>Resultado do Cálculo</h2>
+                <div class="result-content">
+                    <div class="result-item">
+                        <span class="result-label">Origem:</span>
+                        <span id="resultOrigin" class="result-value">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Destino:</span>
+                        <span id="resultDestination" class="result-value">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Distância:</span>
+                        <span id="resultDistance" class="result-value">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Transporte:</span>
+                        <span id="resultTransport" class="result-value">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Pessoas:</span>
+                        <span id="resultPeople" class="result-value">-</span>
+                    </div>
+                    <div id="detailedEmissionSection" class="detailed-emission-section hidden">
+                        <h3 class="detailed-title">📊 Emissão Individual por Pessoa:</h3>
+                        <div class="detailed-item">
+                            <span class="detailed-label">Emissão do Transporte por Pessoa:</span>
+                            <span id="resultTransportPerPerson" class="detailed-value">-</span>
+                        </div>
+                        <div class="detailed-item">
+                            <span class="detailed-label">Emissão Humana por Pessoa:</span>
+                            <span id="resultHumanPerPerson" class="detailed-value">-</span>
+                        </div>
+                        <div class="detailed-item highlight-detailed">
+                            <span class="detailed-label">Total por Pessoa:</span>
+                            <span id="resultEmissionPerPerson" class="detailed-value">-</span>
+                        </div>
+                    </div>
+                    <div class="result-item highlight">
+                        <span class="result-label">Emissão Total de CO₂:</span>
+                        <span id="resultEmission" class="result-value">-</span>
+                    </div>
+                </div>
+                <button type="button" id="resetBtn" class="btn-reset">Novo Cálculo</button>
+            </div>
+
+            <div id="messageContainer" class="message-container hidden"></div>
+        </main>
+
+        <footer>
+            <p><strong>Projeto DIO - DIÊGO FATOR</strong></p>
+            <p>Dados baseados em fatores de emissão médios. Valores podem variar conforme condições específicas.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/routes-data.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
